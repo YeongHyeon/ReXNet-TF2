@@ -68,27 +68,27 @@ class CNN(object):
         if(verbose): print("input", x.shape)
 
         conv1 = self.customlayers.conv2d(x, \
-            self.customlayers.get_weight(vshape=[3, 3, self.channel, 16], name="%s" %("conv1")), \
+            self.customlayers.get_weight(vshape=[3, 3, self.channel, 32], name="%s" %("conv1")), \
             stride_size=2, padding='SAME')
         conv1_bn = self.customlayers.batch_norm(conv1, name="%s_bn" %("conv1"))
         conv1_act = self.customlayers.swish(conv1_bn)
 
         conv2_1 = self.bottleneck(conv1_act, \
-            ksize=self.ksize, inchannel=16, outchannel=32, stride_size=1, \
+            ksize=self.ksize, inchannel=32, outchannel=16, stride_size=1, \
             name="conv2_1", verbose=verbose)
         conv2_2 = self.bottleneck(conv2_1, \
-            ksize=self.ksize, inchannel=32, outchannel=32, stride_size=2, \
+            ksize=self.ksize, inchannel=16, outchannel=27, stride_size=2, \
             name="conv2_2", verbose=verbose)
 
         conv3_1 = self.bottleneck(conv2_2, \
-            ksize=self.ksize, inchannel=32, outchannel=64, stride_size=1, \
+            ksize=self.ksize, inchannel=27, outchannel=38, stride_size=1, \
             name="conv3_1", verbose=verbose)
         conv3_2 = self.bottleneck(conv3_1, \
-            ksize=self.ksize, inchannel=64, outchannel=64, stride_size=2, \
+            ksize=self.ksize, inchannel=38, outchannel=50, stride_size=2, \
             name="conv3_2", verbose=verbose)
 
         conv4_1 = self.customlayers.conv2d(conv3_2, \
-            self.customlayers.get_weight(vshape=[1, 1, 64, 1024], name="conv4_1_1"), \
+            self.customlayers.get_weight(vshape=[1, 1, 50, 1024], name="conv4_1_1"), \
             stride_size=1, padding='SAME')
         conv4_1bn = self.customlayers.batch_norm(conv4_1, name="conv4_1_1bn")
         conv4_1act = self.customlayers.swish(conv4_1bn)
