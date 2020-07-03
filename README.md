@@ -11,7 +11,7 @@ https://github.com/clovaai/rexnet
 ## Concept
 <div align="center">
   <img src="./figures/rexnet.png" width="600">  
-  <p>Spec of ReXNet-v1[1].</p>
+  <p>Spec of ReXNet-v1 [1].</p>
 </div>
 
 ## Performance
