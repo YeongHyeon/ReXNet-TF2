@@ -5,7 +5,7 @@ Unofficial TensorFlow implementation of "ReXNet: Diminishing Representational Bo
 Official PyTorch implementation is provided as the following link.  
 https://github.com/clovaai/rexnet  
 
-* Note that, the detailed neural network architecture is different with the original paper.  
+* Note that, the detailed neural network architecture is different with the original paper [1].  
 * This repository only contains the shorten neural network reflecting the concept.  
 
 ## Concept
